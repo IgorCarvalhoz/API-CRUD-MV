@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MVC.Models;
 
-namespace MVC
+namespace MVC.Context
 {
     public class ContextTable : DbContext
     {
