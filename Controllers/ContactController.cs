@@ -8,24 +8,10 @@ using Microsoft.Extensions.Logging;
 
 namespace MVC.Controllers
 {
-    public class ContactController : Controller
-    {
-        private readonly ILogger<ContactController> _logger;
+    public class ContactController : Controller{
+        public IActionResult Index(){
 
-        public ContactController(ILogger<ContactController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
         }
     }
 }
