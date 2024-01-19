@@ -19,7 +19,8 @@ namespace MVC.Controllers
             _context = context;
         }
         public IActionResult Index(){
-        return View();
-    }
+            var contacts = _context.Contacts.ToList();
+            return View(contacts);
+        }
 }
 }
