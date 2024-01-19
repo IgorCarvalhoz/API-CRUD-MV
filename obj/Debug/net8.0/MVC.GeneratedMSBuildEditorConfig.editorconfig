@@ -18,8 +18,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\OrientacaoObjetos.NET\MVC
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/OrientacaoObjetos.NET/MVC/Views/Contact/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/OrientacaoObjetos.NET/MVC/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/OrientacaoObjetos.NET/MVC/Views/Contact/Post.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxQb3N0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/OrientacaoObjetos.NET/MVC/Views/Home/Index.cshtml]
