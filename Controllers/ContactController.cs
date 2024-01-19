@@ -27,5 +27,10 @@ namespace MVC.Controllers
             
             return View();
         }
+        [HttpPost]
+        public IActionResult Post(Contact contact){
+            
+            return View();
+        }
 }
 }
