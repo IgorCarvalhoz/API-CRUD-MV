@@ -7,30 +7,35 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MVC.Models;
 using MVC.Context;
+using System.Security.Authentication;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace MVC.Controllers
 {
     public class ContactController : Controller {
     
-        private readonly ContextTable? _context;
+        private readonly ContextTable _context;
     
         public ContactController(ContextTable context)
         {
             _context = context;
         }
         public IActionResult Index(){
-            var contacts = _context?.Contacts.ToList();
+            var contacts = _context.Contacts.ToList();
             return View(contacts);
-
         }
         public IActionResult Create(){
-            
             return View();
         }
         [HttpPost]
-        public IActionResult Post(Contact contact){
-            
-            return View();
-        }
+        public IActionResult Create(Contact contact){
+            if (ModelState.IsValid){
+                _context.Contacts.Add(contact);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(contact);
+    }
 }
 }
