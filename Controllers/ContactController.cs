@@ -10,6 +10,7 @@ using MVC.Context;
 using System.Security.Authentication;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace MVC.Controllers
 {
@@ -36,6 +37,22 @@ namespace MVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(contact);
+        }
+        public IActionResult Edit(int ID){
+            var contact = _context.Contacts.Find(ID);
+            if (contact is null ){
+                return NotFound();
+            } 
+           return View(contact);
+        }
+        [HttpPost]
+      public IActionResult Edit(Contact contact){
+       var contactDataBase = _context.Contacts.Find(contact.ID);
+       contactDataBase.Name = contact.Name;
+       contactDataBase.PhoneNumber = contact.PhoneNumber;
+       _context.Contacts.Update(contactDataBase);
+       _context.SaveChanges();
+        return RedirectToAction(nameof(Index));
+      }
     }
-}
 }
