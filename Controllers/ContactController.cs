@@ -7,24 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MVC.Models;
 using MVC.Context;
+using System.Security.Authentication;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace MVC.Controllers
 {
     public class ContactController : Controller {
     
-        private readonly ContextTable? _context;
+        private readonly ContextTable _context;
     
         public ContactController(ContextTable context)
         {
             _context = context;
         }
         public IActionResult Index(){
-            var contacts = _context?.Contacts.ToList();
+            var contacts = _context.Contacts.ToList();
             return View(contacts);
-
         }
         public IActionResult Create(){
-            
             return View();
         }
         [HttpPost]
@@ -35,6 +36,6 @@ namespace MVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(contact);
-        }
     }
+}
 }
