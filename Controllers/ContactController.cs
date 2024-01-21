@@ -28,9 +28,13 @@ namespace MVC.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Post(Contact contact){
-            
-            return View();
+        public IActionResult Create(Contact contact){
+            if (ModelState.IsValid){
+                _context.Contacts.Add(contact);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(contact);
         }
-}
+    }
 }
