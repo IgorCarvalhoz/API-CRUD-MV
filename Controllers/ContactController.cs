@@ -54,5 +54,25 @@ namespace MVC.Controllers
        _context.SaveChanges();
         return RedirectToAction(nameof(Index));
       }
+      public IActionResult Delete(int ID){
+        var contact = _context.Contacts.Find(ID);
+        if (contact is null){
+            return NotFound();
+        }
+        return View(contact);
+      }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int ID)
+        {
+            var contactDataBase = _context.Contacts.Find(ID);
+            if (contactDataBase == null)
+            {
+                return NotFound();
+            }
+            _context.Contacts.Remove(contactDataBase);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
