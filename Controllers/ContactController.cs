@@ -46,13 +46,45 @@ namespace MVC.Controllers
            return View(contact);
         }
         [HttpPost]
-      public IActionResult Edit(Contact contact){
-       var contactDataBase = _context.Contacts.Find(contact.ID);
-       contactDataBase.Name = contact.Name;
-       contactDataBase.PhoneNumber = contact.PhoneNumber;
-       _context.Contacts.Update(contactDataBase);
-       _context.SaveChanges();
-        return RedirectToAction(nameof(Index));
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Contact contact){
+            var contactDataBase = _context.Contacts.Find(contact.ID);
+            if (contactDataBase == null)
+            {
+                return NotFound();
+            }
+            contactDataBase.Name = contact.Name;
+            contactDataBase.PhoneNumber = contact.PhoneNumber;
+            _context.Contacts.Update(contactDataBase);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+      public IActionResult Delete(int ID){
+        var contact = _context.Contacts.Find(ID);
+        if (contact is null){
+            return NotFound();
+        }
+        return View(contact);
       }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int ID)
+        {
+            var contactDataBase = _context.Contacts.Find(ID);
+            if (contactDataBase == null)
+            {
+                return NotFound();
+            }
+            _context.Contacts.Remove(contactDataBase);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+      public IActionResult Details(int ID){
+        var contact = _context.Contacts.Find(ID);
+        if (contact is null){
+            return NotFound();
+        }
+        return View(contact);
     }
+}
 }
