@@ -66,7 +66,7 @@ namespace MVC.Controllers
         }
         return View(contact);
       }
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete")] //Faz com que chame a View Delete dentro da pasta contact
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int ID)
         {

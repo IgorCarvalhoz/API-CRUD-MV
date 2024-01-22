@@ -19,11 +19,13 @@
                 <label asp-for = "CreatedAt" class = "control-label"></label>
                 <input asp-for="CreatedAt" class="form-control" readonly="readonly" />
             </div>
-            <br>
         </form>
     </div>
 </div>
 <br/>
 <div>
+    <a asp-action="Edit" asp-route-id="@Model.ID" type="button" class="btn btn-outline-success">Go To Edit Page</a>
+    <br>
+    <br>
     <a asp-action="Index" type="button" class="btn btn-outline-success">Back</a> 
 </div>
