@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Delete Contact";
 }
-<h1>Delete Contact</h1>
+<h1>Are you sure about to delete this contact? This operation have no backup!</h1>
 <hr/>
 <div class = "row">
     <div class = "col-md-4">
@@ -16,7 +16,7 @@
                 <input asp-for="PhoneNumber" class="form-control" readonly="readonly" />
             </div>
             <br>
-            <button type="submit" class="btn btn-outline-success">Delete</button>
+            <button type="submit" class="btn btn-outline-danger">Delete</button>
         </form>
     </div>
 </div>
