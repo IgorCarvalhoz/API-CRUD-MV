@@ -74,5 +74,12 @@ namespace MVC.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+      public IActionResult Details(int ID){
+        var contact = _context.Contacts.Find(ID);
+        if (contact is null){
+            return NotFound();
+        }        
+        return View(contact);
     }
+}
 }
