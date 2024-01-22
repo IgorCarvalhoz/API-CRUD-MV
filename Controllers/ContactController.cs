@@ -47,7 +47,7 @@ namespace MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditConfirmed(Contact contact){
+        public IActionResult Edit(Contact contact){
             var contactDataBase = _context.Contacts.Find(contact.ID);
             if (contactDataBase == null)
             {
